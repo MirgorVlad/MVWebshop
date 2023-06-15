@@ -1,0 +1,103 @@
+<mxfile host="app.diagrams.net" modified="2023-06-15T12:59:13.579Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36" etag="VFKGDMR4n6-_EY_K9aGf" version="21.4.0" type="device">
+  <diagram name="Страница 1" id="ryvfP3Ey5hcLc0Si50dY">
+    <mxGraphModel dx="2985" dy="1193" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="3300" pageHeight="4681" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="RGwVndqZWtWBwKrqATQt-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="RGwVndqZWtWBwKrqATQt-1" target="RGwVndqZWtWBwKrqATQt-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RGwVndqZWtWBwKrqATQt-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0;entryDx=65;entryDy=180;entryPerimeter=0;" edge="1" parent="1" source="RGwVndqZWtWBwKrqATQt-1" target="RGwVndqZWtWBwKrqATQt-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RGwVndqZWtWBwKrqATQt-47" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="RGwVndqZWtWBwKrqATQt-1" target="RGwVndqZWtWBwKrqATQt-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RGwVndqZWtWBwKrqATQt-1" value="&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;span style=&quot;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;/span&gt;API Gateway&lt;br&gt;&lt;br&gt;&lt;br&gt;REST API" style="verticalAlign=top;align=left;spacingTop=8;spacingLeft=2;spacingRight=12;shape=cube;size=10;direction=south;fontStyle=4;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="510" width="180" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="RGwVndqZWtWBwKrqATQt-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0;entryDx=0;entryDy=85;entryPerimeter=0;" edge="1" parent="1" source="RGwVndqZWtWBwKrqATQt-2" target="RGwVndqZWtWBwKrqATQt-23">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RGwVndqZWtWBwKrqATQt-2" value="&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Auth Service&lt;br&gt;&lt;br&gt;&lt;br&gt;REST API" style="verticalAlign=top;align=left;spacingTop=8;spacingLeft=2;spacingRight=12;shape=cube;size=10;direction=south;fontStyle=4;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="720" width="180" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="RGwVndqZWtWBwKrqATQt-22" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="RGwVndqZWtWBwKrqATQt-3" target="RGwVndqZWtWBwKrqATQt-21">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RGwVndqZWtWBwKrqATQt-3" value="&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;span style=&quot;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;/span&gt;Product Service&lt;br&gt;&lt;br&gt;&lt;br&gt;REST API" style="verticalAlign=top;align=left;spacingTop=8;spacingLeft=2;spacingRight=12;shape=cube;size=10;direction=south;fontStyle=4;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="340" width="180" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="RGwVndqZWtWBwKrqATQt-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0;entryDx=0;entryDy=85;entryPerimeter=0;" edge="1" parent="1" source="RGwVndqZWtWBwKrqATQt-4" target="RGwVndqZWtWBwKrqATQt-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RGwVndqZWtWBwKrqATQt-28" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="RGwVndqZWtWBwKrqATQt-4" target="RGwVndqZWtWBwKrqATQt-27">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RGwVndqZWtWBwKrqATQt-4" value="&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;span style=&quot;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;/span&gt;Order Service&lt;br&gt;&lt;br&gt;&lt;br&gt;REST API" style="verticalAlign=top;align=left;spacingTop=8;spacingLeft=2;spacingRight=12;shape=cube;size=10;direction=south;fontStyle=4;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1770" y="540" width="180" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="RGwVndqZWtWBwKrqATQt-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0;entryDx=65;entryDy=180;entryPerimeter=0;" edge="1" parent="1" source="RGwVndqZWtWBwKrqATQt-5" target="RGwVndqZWtWBwKrqATQt-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RGwVndqZWtWBwKrqATQt-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="RGwVndqZWtWBwKrqATQt-5" target="RGwVndqZWtWBwKrqATQt-25">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RGwVndqZWtWBwKrqATQt-46" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="RGwVndqZWtWBwKrqATQt-5" target="RGwVndqZWtWBwKrqATQt-44">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RGwVndqZWtWBwKrqATQt-5" value="&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;span style=&quot;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;/span&gt;Cart Service&lt;br&gt;&lt;br&gt;&lt;br&gt;REST API" style="verticalAlign=top;align=left;spacingTop=8;spacingLeft=2;spacingRight=12;shape=cube;size=10;direction=south;fontStyle=4;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1420" y="550" width="180" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="RGwVndqZWtWBwKrqATQt-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0;entryDx=0;entryDy=85;entryPerimeter=0;" edge="1" parent="1" source="RGwVndqZWtWBwKrqATQt-7" target="RGwVndqZWtWBwKrqATQt-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RGwVndqZWtWBwKrqATQt-30" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="RGwVndqZWtWBwKrqATQt-7" target="RGwVndqZWtWBwKrqATQt-29">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RGwVndqZWtWBwKrqATQt-7" value="&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;span style=&quot;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;/span&gt;Payment Service&lt;br&gt;&lt;br&gt;&lt;br&gt;REST API" style="verticalAlign=top;align=left;spacingTop=8;spacingLeft=2;spacingRight=12;shape=cube;size=10;direction=south;fontStyle=4;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1770" y="740" width="180" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="RGwVndqZWtWBwKrqATQt-32" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="RGwVndqZWtWBwKrqATQt-8" target="RGwVndqZWtWBwKrqATQt-31">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RGwVndqZWtWBwKrqATQt-8" value="&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;span style=&quot;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;/span&gt;Notification&amp;nbsp;Service&lt;br&gt;&lt;br&gt;&lt;br&gt;REST API" style="verticalAlign=top;align=left;spacingTop=8;spacingLeft=2;spacingRight=12;shape=cube;size=10;direction=south;fontStyle=4;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1780" y="960" width="180" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="RGwVndqZWtWBwKrqATQt-21" value="&lt;br&gt;&lt;br&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Product DB&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;PostgreSQL" style="verticalAlign=top;align=left;spacingTop=8;spacingLeft=2;spacingRight=12;shape=cube;size=10;direction=south;fontStyle=4;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="160" width="180" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="RGwVndqZWtWBwKrqATQt-23" value="&lt;br&gt;&lt;br&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;User&amp;nbsp;DB&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;MongoDB" style="verticalAlign=top;align=left;spacingTop=8;spacingLeft=2;spacingRight=12;shape=cube;size=10;direction=south;fontStyle=4;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="920" width="180" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="RGwVndqZWtWBwKrqATQt-25" value="&lt;br&gt;&lt;br&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Cart&amp;nbsp;DB&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;PostgreSQL" style="verticalAlign=top;align=left;spacingTop=8;spacingLeft=2;spacingRight=12;shape=cube;size=10;direction=south;fontStyle=4;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1420" y="730" width="180" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="RGwVndqZWtWBwKrqATQt-27" value="&lt;br&gt;&lt;br&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Order&amp;nbsp;DB&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;PostgreSQL" style="verticalAlign=top;align=left;spacingTop=8;spacingLeft=2;spacingRight=12;shape=cube;size=10;direction=south;fontStyle=4;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1770" y="360" width="180" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="RGwVndqZWtWBwKrqATQt-29" value="&lt;br&gt;&lt;br&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Payment DB&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;MongoDB" style="verticalAlign=top;align=left;spacingTop=8;spacingLeft=2;spacingRight=12;shape=cube;size=10;direction=south;fontStyle=4;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="2040" y="740" width="180" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="RGwVndqZWtWBwKrqATQt-31" value="&lt;br&gt;&lt;br&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Notification&amp;nbsp;DB&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;MongoDB" style="verticalAlign=top;align=left;spacingTop=8;spacingLeft=2;spacingRight=12;shape=cube;size=10;direction=south;fontStyle=4;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="2040" y="960" width="180" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="RGwVndqZWtWBwKrqATQt-34" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0;entryDx=65;entryDy=180;entryPerimeter=0;" edge="1" parent="1" source="RGwVndqZWtWBwKrqATQt-33" target="RGwVndqZWtWBwKrqATQt-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RGwVndqZWtWBwKrqATQt-33" value="Actor" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" vertex="1" parent="1">
+          <mxGeometry x="870" y="530" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="RGwVndqZWtWBwKrqATQt-43" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="RGwVndqZWtWBwKrqATQt-44" target="RGwVndqZWtWBwKrqATQt-45">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RGwVndqZWtWBwKrqATQt-44" value="&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;span style=&quot;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Inventory&lt;/span&gt;&lt;/span&gt;&amp;nbsp;Service&lt;br&gt;&lt;br&gt;&lt;br&gt;REST API" style="verticalAlign=top;align=left;spacingTop=8;spacingLeft=2;spacingRight=12;shape=cube;size=10;direction=south;fontStyle=4;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1420" y="360" width="180" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="RGwVndqZWtWBwKrqATQt-45" value="&lt;br&gt;&lt;br&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Inventory&amp;nbsp;DB&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;PostgreSQL" style="verticalAlign=top;align=left;spacingTop=8;spacingLeft=2;spacingRight=12;shape=cube;size=10;direction=south;fontStyle=4;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1420" y="160" width="180" height="120" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
