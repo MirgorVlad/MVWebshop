@@ -14,6 +14,7 @@ Product Service:
 Handles product management and catalog functionalities.
 Allows sellers to create, update, and delete product listings.
 Provides endpoints for browsing and searching products.
+
 Cart Service:
 
 Manages the user's shopping cart.
