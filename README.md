@@ -15,6 +15,20 @@ Handles product management and catalog functionalities.
 Allows sellers to create, update, and delete product listings.
 Provides endpoints for browsing and searching products.
 
+Endpoints:
+  /api/product/create(method = POST)
+  add product to db
+  /api/product/edit/{id}(mehtod = POST)
+  edit product by id
+  /api/product/delete/{id}(methid = POST)
+  delete product by id
+  /api/product/getAll(method = GET)
+  get all products
+  /api/product/get{id}(method = GET)
+  get product by id
+  /api/product/get_by_user(method = GET)
+  get products by user id
+
 Cart Service:
 
 Manages the user's shopping cart.
