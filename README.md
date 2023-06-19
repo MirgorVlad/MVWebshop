@@ -47,6 +47,24 @@ Cart Service:
 Manages the user's shopping cart.
 Enables adding, removing, and updating items in the cart.
 Calculates the total price and applies discounts.
+Endpoints:
+  /api/cart(method = GET)
+   get All items from cart
+   
+  /api/cart/{userId}(method = GET)
+  get all items for user with (userId) from cart
+  
+  /api/cart(method = POST)
+  add  item to cart
+  
+  /api/cart/{id}(method = DELETE)
+  delete item from cart by id
+  
+  /api/cart/clear/{userID}(method = DELETE)
+  delete all items for user with (userId)
+  
+  /api/cart/{id}(method = PUT)
+  update quantity in item with (id)
 
 Order Service:
 
