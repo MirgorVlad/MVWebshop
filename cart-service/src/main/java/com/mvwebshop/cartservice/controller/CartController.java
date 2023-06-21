@@ -20,7 +20,7 @@ public class CartController {
     private final CartItemService cartItemService;
 
     @PostMapping
-    @ResponseStatus(HttpStatus.OK)
+    @ResponseStatus(HttpStatus.CREATED)
     public void addItem(@RequestBody CartItemRequest cartItemRequest){
         cartItemService.save(cartItemRequest);
     }
