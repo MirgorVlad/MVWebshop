@@ -10,7 +10,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
@@ -20,7 +19,6 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -96,9 +94,52 @@ public class ProductControllerTest extends BaseTest {
                                 .constructCollectionType(List.class, ProductResponse.class));
 
 
-
-        // Verify that the extracted list and the list from the repository are equal
         assertEquals(responseList.size(), productRepository.findAll().size());
+    }
+
+    @Test
+    void shouldGetByProductById() throws Exception {
+        Product product = productRepository.findById(getIdFromFirstProduct()).get();
+        String jsonResponse = mockMvc.perform(MockMvcRequestBuilders.get("/api/product/get/" + product.getId())
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andReturn()
+                .getResponse()
+                .getContentAsString();
+
+        ProductResponse productResponse = objectMapper.readValue(jsonResponse, ProductResponse.class);
+
+
+
+        assertEquals(product.getId(), productResponse.getId());
+        assertEquals(product.getTitle(), productResponse.getTitle());
+        assertEquals(product.getDescription(), productResponse.getDescription());
+        assertEquals(product.getCondition(), productResponse.getCondition());
+        assertEquals(product.getStock(), productResponse.getStock());
+        assertEquals(product.getPrice(), productResponse.getPrice());
+        assertEquals(product.getImage(), productResponse.getImage());
+        assertEquals(product.getUserId(), productResponse.getUserId());
+
+    }
+
+    @Test
+    void shouldGetProductsByUserId() throws Exception {
+        Integer userId = productRepository.findById(getIdFromFirstProduct()).get().getUserId();
+        List<Product> productList = productRepository.findAllByUserId(userId);
+        String jsonResponse = mockMvc.perform(MockMvcRequestBuilders.get("/api/product/get_by_user/" + userId)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andReturn()
+                .getResponse()
+                .getContentAsString();
+
+        List<ProductResponse> responseList =
+                objectMapper.readValue(jsonResponse,
+                        objectMapper.getTypeFactory()
+                                .constructCollectionType(List.class, ProductResponse.class));
+
+
+        assertEquals(responseList.size(), productList.size());
     }
 
     private Integer getIdFromFirstProduct() {
