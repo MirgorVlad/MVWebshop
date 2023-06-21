@@ -3,6 +3,7 @@ package com.vmwebshop.productservice;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vmwebshop.productservice.controller.BaseTest;
 import com.vmwebshop.productservice.dto.ProductRequest;
+import com.vmwebshop.productservice.dto.ProductResponse;
 import com.vmwebshop.productservice.model.Product;
 import com.vmwebshop.productservice.repository.ProductRepository;
 import org.junit.jupiter.api.Assertions;
@@ -19,7 +20,9 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 
 
 import java.util.List;
+import java.util.stream.Collectors;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 //@DataJpaTest
@@ -60,13 +63,47 @@ public class ProductControllerTest extends BaseTest {
                 .andExpect(status().isOk());
 
         Assertions.assertTrue(productRepository.findById(id).get().getTitle().equals(getProductRequest().getTitle()));
-//        Assertions.assertTrue(productRepository.findById(id).get().getDescription().equals(getProductRequest().getDescription()));
-//        Assertions.assertTrue(productRepository.findById(id).get().getCondition().equals(getProductRequest().getCondition()));
-//        Assertions.assertTrue(productRepository.findById(id).get().getPrice().equals(getProductRequest().getPrice()));
-//        Assertions.assertTrue(productRepository.findById(id).get().getImage().equals(getProductRequest().getImage()));
-//        Assertions.assertTrue(productRepository.findById(id).get().getStock().equals(getProductRequest().getStock()));
-//        Assertions.assertTrue(productRepository.findById(1).get().getUserId().equals(getProductRequest().getUserId()));
+        Assertions.assertTrue(productRepository.findById(id).get().getDescription().equals(getProductRequest().getDescription()));
+        Assertions.assertTrue(productRepository.findById(id).get().getCondition().equals(getProductRequest().getCondition()));
+        Assertions.assertTrue(productRepository.findById(id).get().getPrice().equals(getProductRequest().getPrice()));
+        Assertions.assertTrue(productRepository.findById(id).get().getImage().equals(getProductRequest().getImage()));
+        Assertions.assertTrue(productRepository.findById(id).get().getStock().equals(getProductRequest().getStock()));
+        Assertions.assertTrue(productRepository.findById(id).get().getUserId().equals(getProductRequest().getUserId()));
 
+    }
+
+    @Test
+    void shouldDeleteProduct() throws Exception {
+        Integer id = getIdFromFirstProduct();
+        mockMvc.perform(MockMvcRequestBuilders.post("/api/product/delete/" + id))
+                .andExpect(status().isOk());
+
+        Assertions.assertTrue(!productRepository.findById(id).isPresent());
+    }
+
+    @Test
+    void shouldGetAllProducts() throws Exception {
+        String jsonResponse = mockMvc.perform(MockMvcRequestBuilders.get("/api/product/getAll")
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andReturn()
+                .getResponse()
+                .getContentAsString();
+
+        List<ProductResponse> responseList =
+                objectMapper.readValue(jsonResponse,
+                        objectMapper.getTypeFactory()
+                                .constructCollectionType(List.class, ProductResponse.class));
+
+
+
+        // Verify that the extracted list and the list from the repository are equal
+        assertEquals(responseList.size(), productRepository.findAll().size());
+    }
+
+    private Integer getIdFromFirstProduct() {
+        List<Product> productList = productRepository.findAll();
+        return productList.get(0).getId();
     }
 
     private ProductRequest getProductRequest() {
