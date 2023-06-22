@@ -1,7 +1,6 @@
 package com.mvwebshop.cartservice.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.mvwebshop.cartservice.BaseTest;
 import com.mvwebshop.cartservice.dto.CartItemRequest;
 import com.mvwebshop.cartservice.dto.CartItemResponse;
 import com.mvwebshop.cartservice.model.CartItem;
@@ -21,19 +20,20 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.testcontainers.containers.PostgreSQLContainer;
+import org.testcontainers.junit.jupiter.Container;
+import org.testcontainers.junit.jupiter.Testcontainers;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @AutoConfigureMockMvc
 @SpringBootTest
-class CartControllerTest extends BaseTest{
+@Testcontainers
+class CartControllerTest{
 
     @Autowired
     private CartItemRepository cartItemRepository;
@@ -42,6 +42,18 @@ class CartControllerTest extends BaseTest{
     @Autowired
     private ObjectMapper objectMapper;
 
+    @Container
+    private static final PostgreSQLContainer<?> postgreSQLContainer = new PostgreSQLContainer<>("postgres:latest");
+
+    @BeforeAll
+    public static void setupContainer() {
+        postgreSQLContainer.start();
+        System.setProperty("spring.datasource.url", postgreSQLContainer.getJdbcUrl());
+        System.setProperty("spring.datasource.username", postgreSQLContainer.getUsername());
+        System.setProperty("spring.datasource.password", postgreSQLContainer.getPassword());
+    }
+
+
     @BeforeEach
     public void clearData(){
         cartItemRepository.deleteAll();
@@ -49,6 +61,7 @@ class CartControllerTest extends BaseTest{
 
     @Test
     void shouldCreateCartItem() throws Exception {
+
         CartItemRequest cartItemRequest = new CartItemRequest(1L, 3, 2L);
         mockMvc.perform(MockMvcRequestBuilders.post("/api/cart")
                 .contentType(MediaType.APPLICATION_JSON)
@@ -59,8 +72,8 @@ class CartControllerTest extends BaseTest{
 
     @Test
     void shouldReturnAllItems() throws Exception {
-        CartItem cartItemRequest = new CartItem(1L,1L, 3, 2L);
-        CartItem  cartItemRequest2 = new CartItem(2L, 2L, 5, 2L);
+        CartItem cartItemRequest = new CartItem(null,1L, 3, 2L);
+        CartItem  cartItemRequest2 = new CartItem(null, 2L, 5, 2L);
         List<CartItem> itemRequests = Arrays.asList(cartItemRequest, cartItemRequest2);
         cartItemRepository.saveAll(itemRequests);
         mockMvc.perform(MockMvcRequestBuilders.get("/api/cart"))
