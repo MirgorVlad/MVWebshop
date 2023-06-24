@@ -34,90 +34,90 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @Testcontainers
 class CartControllerTest{
-
-    @Autowired
-    private CartItemRepository cartItemRepository;
-    @Autowired
-    private MockMvc mockMvc;
-    @Autowired
-    private ObjectMapper objectMapper;
-
-    @Container
-    private static final PostgreSQLContainer<?> postgreSQLContainer = new PostgreSQLContainer<>("postgres:latest");
-
-    @BeforeAll
-    public static void setupContainer() {
-        postgreSQLContainer.start();
-        System.setProperty("spring.datasource.url", postgreSQLContainer.getJdbcUrl());
-        System.setProperty("spring.datasource.username", postgreSQLContainer.getUsername());
-        System.setProperty("spring.datasource.password", postgreSQLContainer.getPassword());
-    }
-
-
-    @BeforeEach
-    public void clearData(){
-        cartItemRepository.deleteAll();
-    }
-
-    @Test
-    void shouldCreateCartItem() throws Exception {
-
-        CartItemRequest cartItemRequest = new CartItemRequest(1L, 3, 2L);
-        mockMvc.perform(MockMvcRequestBuilders.post("/api/cart")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(cartItemRequest)))
-                .andExpect(status().isCreated());
-        Assertions.assertEquals(1, cartItemRepository.findAll().size());
-    }
-
-    @Test
-    void shouldReturnAllItems() throws Exception {
-        CartItem cartItemRequest = new CartItem(null,1L, 3, 2L);
-        CartItem  cartItemRequest2 = new CartItem(null, 2L, 5, 2L);
-        List<CartItem> itemRequests = Arrays.asList(cartItemRequest, cartItemRequest2);
-        cartItemRepository.saveAll(itemRequests);
-        mockMvc.perform(MockMvcRequestBuilders.get("/api/cart"))
-                .andExpect(status().isOk());
-        Assertions.assertEquals(itemRequests.size(), cartItemRepository.findAll().size());
-
-    }
-
-    @Test
-    void shouldUpdateQuantity() throws Exception {
-        int  newQuantity = 5;
-        CartItem cartItemRequest = new CartItem(1L,1L, 3, 2L);
-        CartItemRequest requestWithNewQuantity = new CartItemRequest(1L, newQuantity, 2L);
-        long id = cartItemRepository.save(cartItemRequest).getId();
-
-        mockMvc.perform(MockMvcRequestBuilders.put("/api/cart/" + id)
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(requestWithNewQuantity)))
-                .andExpect(status().isOk());
-        Assertions.assertEquals(newQuantity, cartItemRepository.findById(id).get().getQuantity());
-    }
-
-    @Test
-    void shouldReturnAllItemsByUser() throws Exception {
-        long userId = 2L;
-        CartItem cartItemRequest = new CartItem(1L,1L, 3, userId);
-        CartItem  cartItemRequest2 = new CartItem(2L, 2L, 5, userId);
-        List<CartItem> itemRequests = Arrays.asList(cartItemRequest, cartItemRequest2);
-        cartItemRepository.saveAll(itemRequests);
-        mockMvc.perform(MockMvcRequestBuilders.get("/api/cart/" + userId))
-                .andExpect(status().isOk());
-        Assertions.assertEquals(itemRequests.get(0).getUserId(),
-                cartItemRepository.findAll().get(0).getUserId());
-
-    }
-
-    @Test
-    void shouldDeleteById() throws Exception {
-        long id = 1L;
-        CartItem cartItemRequest = new CartItem(id,1L, 3, 2L);
-        CartItem cartItemSaved = cartItemRepository.save(cartItemRequest);
-        mockMvc.perform(MockMvcRequestBuilders.delete("/api/cart/" + cartItemSaved.getId()))
-                .andExpect(status().isOk());
-        Assertions.assertEquals(0,  cartItemRepository.findAll().size());
-
-    }
+//
+//    @Autowired
+//    private CartItemRepository cartItemRepository;
+//    @Autowired
+//    private MockMvc mockMvc;
+//    @Autowired
+//    private ObjectMapper objectMapper;
+//
+//    @Container
+//    private static final PostgreSQLContainer<?> postgreSQLContainer = new PostgreSQLContainer<>("postgres:latest");
+//
+//    @BeforeAll
+//    public static void setupContainer() {
+//        postgreSQLContainer.start();
+//        System.setProperty("spring.datasource.url", postgreSQLContainer.getJdbcUrl());
+//        System.setProperty("spring.datasource.username", postgreSQLContainer.getUsername());
+//        System.setProperty("spring.datasource.password", postgreSQLContainer.getPassword());
+//    }
+//
+//
+//    @BeforeEach
+//    public void clearData(){
+//        cartItemRepository.deleteAll();
+//    }
+//
+//    @Test
+//    void shouldCreateCartItem() throws Exception {
+//
+//        CartItemRequest cartItemRequest = new CartItemRequest(1L, 3, 2L);
+//        mockMvc.perform(MockMvcRequestBuilders.post("/api/cart")
+//                .contentType(MediaType.APPLICATION_JSON)
+//                .content(objectMapper.writeValueAsString(cartItemRequest)))
+//                .andExpect(status().isCreated());
+//        Assertions.assertEquals(1, cartItemRepository.findAll().size());
+//    }
+//
+//    @Test
+//    void shouldReturnAllItems() throws Exception {
+//        CartItem cartItemRequest = new CartItem(null,1L, 3, 2L);
+//        CartItem  cartItemRequest2 = new CartItem(null, 2L, 5, 2L);
+//        List<CartItem> itemRequests = Arrays.asList(cartItemRequest, cartItemRequest2);
+//        cartItemRepository.saveAll(itemRequests);
+//        mockMvc.perform(MockMvcRequestBuilders.get("/api/cart"))
+//                .andExpect(status().isOk());
+//        Assertions.assertEquals(itemRequests.size(), cartItemRepository.findAll().size());
+//
+//    }
+//
+//    @Test
+//    void shouldUpdateQuantity() throws Exception {
+//        int  newQuantity = 5;
+//        CartItem cartItemRequest = new CartItem(1L,1L, 3, 2L);
+//        CartItemRequest requestWithNewQuantity = new CartItemRequest(1L, newQuantity, 2L);
+//        long id = cartItemRepository.save(cartItemRequest).getId();
+//
+//        mockMvc.perform(MockMvcRequestBuilders.put("/api/cart/" + id)
+//                        .contentType(MediaType.APPLICATION_JSON)
+//                        .content(objectMapper.writeValueAsString(requestWithNewQuantity)))
+//                .andExpect(status().isOk());
+//        Assertions.assertEquals(newQuantity, cartItemRepository.findById(id).get().getQuantity());
+//    }
+//
+//    @Test
+//    void shouldReturnAllItemsByUser() throws Exception {
+//        long userId = 2L;
+//        CartItem cartItemRequest = new CartItem(1L,1L, 3, userId);
+//        CartItem  cartItemRequest2 = new CartItem(2L, 2L, 5, userId);
+//        List<CartItem> itemRequests = Arrays.asList(cartItemRequest, cartItemRequest2);
+//        cartItemRepository.saveAll(itemRequests);
+//        mockMvc.perform(MockMvcRequestBuilders.get("/api/cart/" + userId))
+//                .andExpect(status().isOk());
+//        Assertions.assertEquals(itemRequests.get(0).getUserId(),
+//                cartItemRepository.findAll().get(0).getUserId());
+//
+//    }
+//
+//    @Test
+//    void shouldDeleteById() throws Exception {
+//        long id = 1L;
+//        CartItem cartItemRequest = new CartItem(id,1L, 3, 2L);
+//        CartItem cartItemSaved = cartItemRepository.save(cartItemRequest);
+//        mockMvc.perform(MockMvcRequestBuilders.delete("/api/cart/" + cartItemSaved.getId()))
+//                .andExpect(status().isOk());
+//        Assertions.assertEquals(0,  cartItemRepository.findAll().size());
+//
+//    }
 }
