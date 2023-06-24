@@ -1,12 +1,13 @@
 package com.vmwebshop.productservice;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.vmwebshop.productservice.controller.BaseTest;
 import com.vmwebshop.productservice.dto.ProductRequest;
 import com.vmwebshop.productservice.dto.ProductResponse;
 import com.vmwebshop.productservice.model.Product;
 import com.vmwebshop.productservice.repository.ProductRepository;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -15,6 +16,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.testcontainers.containers.PostgreSQLContainer;
+import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
 
@@ -25,15 +28,32 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @AutoConfigureMockMvc
-@Testcontainers
 @SpringBootTest
-public class ProductControllerTest extends BaseTest {
+@Testcontainers
+public class ProductControllerTest{
     @Autowired
     private ProductRepository productRepository;
     @Autowired
     private MockMvc mockMvc;
     @Autowired
     private ObjectMapper objectMapper;
+
+    @Container
+    private static final PostgreSQLContainer<?> postgreSQLContainer = new PostgreSQLContainer<>("postgres:latest");
+
+    @BeforeAll
+    public static void setupContainer() {
+        postgreSQLContainer.start();
+        System.setProperty("spring.datasource.url", postgreSQLContainer.getJdbcUrl());
+        System.setProperty("spring.datasource.username", postgreSQLContainer.getUsername());
+        System.setProperty("spring.datasource.password", postgreSQLContainer.getPassword());
+    }
+
+    @BeforeEach
+    public void clearData(){
+        productRepository.deleteAll();
+    }
+
     @Test
     void shouldCreateProduct() throws Exception {
         ProductRequest productRequest = getProductRequest();
@@ -51,8 +71,10 @@ public class ProductControllerTest extends BaseTest {
         ProductRequest productRequest = getProductRequest();
         String productrequeststring = objectMapper.writeValueAsString(productRequest);
 
-        List<Product> productList = productRepository.findAll();
-        Integer id = productList.get(0).getId();
+        Product product = new Product();
+        productRepository.save(product);
+
+        Integer id = product.getId();
 
         mockMvc.perform(MockMvcRequestBuilders.post("/api/product/edit/" + id)
                         .contentType(MediaType.APPLICATION_JSON)
@@ -71,7 +93,10 @@ public class ProductControllerTest extends BaseTest {
 
     @Test
     void shouldDeleteProduct() throws Exception {
-        Integer id = getIdFromFirstProduct();
+        Product product = new Product();
+        productRepository.save(product);
+
+        Integer id = product.getId();
         mockMvc.perform(MockMvcRequestBuilders.post("/api/product/delete/" + id))
                 .andExpect(status().isOk());
 
@@ -98,7 +123,8 @@ public class ProductControllerTest extends BaseTest {
 
     @Test
     void shouldGetByProductById() throws Exception {
-        Product product = productRepository.findById(getIdFromFirstProduct()).get();
+        Product product = new Product();
+        productRepository.save(product);
         String jsonResponse = mockMvc.perform(MockMvcRequestBuilders.get("/api/product/get/" + product.getId())
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
@@ -123,9 +149,11 @@ public class ProductControllerTest extends BaseTest {
 
     @Test
     void shouldGetProductsByUserId() throws Exception {
-        Integer userId = productRepository.findById(getIdFromFirstProduct()).get().getUserId();
-        List<Product> productList = productRepository.findAllByUserId(userId);
-        String jsonResponse = mockMvc.perform(MockMvcRequestBuilders.get("/api/product/get_by_user/" + userId)
+        Product product = new Product();
+        product.setUserId(1);
+        productRepository.save(product);
+        List<Product> productList = productRepository.findAllByUserId(1);
+        String jsonResponse = mockMvc.perform(MockMvcRequestBuilders.get("/api/product/get_by_user/" + 1)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andReturn()
@@ -139,11 +167,6 @@ public class ProductControllerTest extends BaseTest {
 
 
         assertEquals(responseList.size(), productList.size());
-    }
-
-    private Integer getIdFromFirstProduct() {
-        List<Product> productList = productRepository.findAll();
-        return productList.get(0).getId();
     }
 
     private ProductRequest getProductRequest() {
