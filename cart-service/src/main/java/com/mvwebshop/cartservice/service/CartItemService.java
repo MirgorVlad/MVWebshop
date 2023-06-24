@@ -51,6 +51,7 @@ public class CartItemService {
                 .retrieve()
                 .bodyToMono(ProductResponse[].class)
                 .block();
+        System.out.println(allProducts);
         return cartItemRepository.findAll().stream()
                 .map(this::mapToCartItemResponse).toList();
     }
