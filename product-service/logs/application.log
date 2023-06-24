@@ -3959,3 +3959,53 @@ Caused by: org.postgresql.util.PSQLException: ERROR: relation "product" does not
 2023-06-24 17:49:35,266 INFO [SpringApplicationShutdownHook] o.s.o.j.LocalContainerEntityManagerFactoryBean [AbstractEntityManagerFactoryBean.java:650] Closing JPA EntityManagerFactory for persistence unit 'default'
 2023-06-24 17:49:35,283 INFO [SpringApplicationShutdownHook] c.z.h.HikariDataSource [HikariDataSource.java:350] HikariPool-1 - Shutdown initiated...
 2023-06-24 17:49:35,301 INFO [SpringApplicationShutdownHook] c.z.h.HikariDataSource [HikariDataSource.java:352] HikariPool-1 - Shutdown completed.
+2023-06-24 18:08:28,793 INFO [main] o.s.t.c.s.AnnotationConfigContextLoaderUtils [AnnotationConfigContextLoaderUtils.java:83] Could not detect default configuration classes for test class [com.vmwebshop.productservice.ProductControllerTest]: ProductControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-06-24 18:08:28,884 INFO [main] o.s.b.t.c.SpringBootTestContextBootstrapper [SpringBootTestContextBootstrapper.java:248] Found @SpringBootConfiguration com.vmwebshop.productservice.ProductServiceApplication for test class com.vmwebshop.productservice.ProductControllerTest
+2023-06-24 18:08:28,962 INFO [main] o.t.u.ImageNameSubstitutor [ImageNameSubstitutor.java:60] Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2023-06-24 18:08:29,095 INFO [main] o.t.d.DockerClientProviderStrategy [DockerClientProviderStrategy.java:382] Loaded org.testcontainers.dockerclient.UnixSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+2023-06-24 18:08:29,291 INFO [main] o.t.d.DockerClientProviderStrategy [DockerClientProviderStrategy.java:292] Found Docker environment with local Unix socket (unix:///var/run/docker.sock)
+2023-06-24 18:08:29,293 INFO [main] o.t.DockerClientFactory [DockerClientFactory.java:203] Docker host IP address is localhost
+2023-06-24 18:08:29,307 INFO [main] o.t.DockerClientFactory [DockerClientFactory.java:210] Connected to docker: 
+  Server Version: 20.10.24
+  API Version: 1.41
+  Operating System: Ubuntu Core 22
+  Total Memory: 7722 MB
+2023-06-24 18:08:29,321 INFO [main] t.t.5.1 [GenericContainer.java:376] Creating container for image: testcontainers/ryuk:0.5.1
+2023-06-24 18:08:29,382 INFO [main] o.t.u.RegistryAuthLocator [RegistryAuthLocator.java:292] Credential helper/store (docker-credential-desktop) does not have credentials for https://index.docker.io/v1/
+2023-06-24 18:08:29,458 INFO [main] t.t.5.1 [GenericContainer.java:440] Container testcontainers/ryuk:0.5.1 is starting: 779c8c406238b5d545455a49c26b9565a9dffaf70131b40c64be657180969a53
+2023-06-24 18:08:30,254 INFO [main] t.t.5.1 [GenericContainer.java:531] Container testcontainers/ryuk:0.5.1 started in PT0.942555283S
+2023-06-24 18:08:30,259 INFO [main] o.t.u.RyukResourceReaper [RyukResourceReaper.java:43] Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2023-06-24 18:08:30,259 INFO [main] o.t.DockerClientFactory [DockerClientFactory.java:240] Checking the system...
+2023-06-24 18:08:30,259 INFO [main] o.t.DockerClientFactory [DockerClientFactory.java:261] ✔︎ Docker server version should be at least 1.6.0
+2023-06-24 18:08:30,260 INFO [main] t.postgres:latest [GenericContainer.java:376] Creating container for image: postgres:latest
+2023-06-24 18:08:30,288 INFO [main] t.postgres:latest [GenericContainer.java:440] Container postgres:latest is starting: d82f65fa99a012e49a62e72b1a20eedb26bf2d0780276895fe26c366c3885660
+2023-06-24 18:08:31,471 INFO [main] t.postgres:latest [GenericContainer.java:531] Container postgres:latest started in PT1.210962657S
+2023-06-24 18:08:31,471 INFO [main] t.postgres:latest [JdbcDatabaseContainer.java:186] Container is started (JDBC URL: jdbc:postgresql://localhost:32797/test?loggerLevel=OFF)
+2023-06-24 18:08:31,654 INFO [main] c.v.p.ProductControllerTest [StartupInfoLogger.java:51] Starting ProductControllerTest using Java 20.0.1 with PID 22039 (started by mirgor in /home/mirgor/IdeaProjects/MVWebshop/product-service)
+2023-06-24 18:08:31,656 INFO [main] c.v.p.ProductControllerTest [SpringApplication.java:633] No active profile set, falling back to 1 default profile: "default"
+2023-06-24 18:08:32,132 INFO [main] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:138] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-06-24 18:08:32,177 INFO [main] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:208] Finished Spring Data repository scanning in 39 ms. Found 1 JPA repository interfaces.
+2023-06-24 18:08:32,463 INFO [main] o.h.j.i.u.LogHelper [LogHelper.java:31] HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-06-24 18:08:32,489 INFO [main] o.h.Version [Version.java:44] HHH000412: Hibernate ORM core version 6.2.2.Final
+2023-06-24 18:08:32,491 INFO [main] o.h.c.Environment [Environment.java:191] HHH000406: Using bytecode reflection optimizer
+2023-06-24 18:08:32,560 INFO [main] o.h.b.i.BytecodeProviderInitiator [BytecodeProviderInitiator.java:53] HHH000021: Bytecode provider name : bytebuddy
+2023-06-24 18:08:32,632 INFO [main] o.s.o.j.p.SpringPersistenceUnitInfo [SpringPersistenceUnitInfo.java:87] No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-06-24 18:08:32,641 INFO [main] c.z.h.HikariDataSource [HikariDataSource.java:110] HikariPool-1 - Starting...
+2023-06-24 18:08:32,759 INFO [main] c.z.h.p.HikariPool [HikariPool.java:565] HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@4cc89246
+2023-06-24 18:08:32,760 INFO [main] c.z.h.HikariDataSource [HikariDataSource.java:123] HikariPool-1 - Start completed.
+2023-06-24 18:08:32,777 INFO [main] o.h.o.dialect [DialectFactoryImpl.java:93] HHH035001: Using dialect: org.hibernate.dialect.PostgreSQLDialect, version: org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$DialectResolutionInfoImpl@41026e5c
+2023-06-24 18:08:32,887 INFO [main] o.h.b.i.BytecodeProviderInitiator [BytecodeProviderInitiator.java:53] HHH000021: Bytecode provider name : bytebuddy
+2023-06-24 18:08:33,280 INFO [main] o.h.e.t.j.p.i.JtaPlatformInitiator [JtaPlatformInitiator.java:51] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-06-24 18:08:33,322 INFO [main] o.s.o.j.LocalContainerEntityManagerFactoryBean [AbstractEntityManagerFactoryBean.java:437] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-06-24 18:08:33,675 WARN [main] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [JpaBaseConfiguration.java:231] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-06-24 18:08:33,935 INFO [main] o.s.b.t.m.w.SpringBootMockServletContext [MockServletContext.java:435] Initializing Spring TestDispatcherServlet ''
+2023-06-24 18:08:33,936 INFO [main] o.s.t.w.s.TestDispatcherServlet [FrameworkServlet.java:532] Initializing Servlet ''
+2023-06-24 18:08:33,938 INFO [main] o.s.t.w.s.TestDispatcherServlet [FrameworkServlet.java:554] Completed initialization in 1 ms
+2023-06-24 18:08:33,951 INFO [main] c.v.p.ProductControllerTest [StartupInfoLogger.java:57] Started ProductControllerTest in 2.454 seconds (process running for 5.769)
+2023-06-24 18:08:34,662 INFO [main] c.v.p.s.ProductService [ProductService.java:72] Products with user_id 1 got
+2023-06-24 18:08:34,774 INFO [main] c.v.p.s.ProductService [ProductService.java:37] Product with id 3 saved
+2023-06-24 18:08:34,792 INFO [main] c.v.p.s.ProductService [ProductService.java:59] All products got.
+2023-06-24 18:08:34,819 INFO [main] c.v.p.s.ProductService [ProductService.java:48] Product with id 5 updated
+2023-06-24 18:08:35,188 INFO [SpringApplicationShutdownHook] o.s.o.j.LocalContainerEntityManagerFactoryBean [AbstractEntityManagerFactoryBean.java:650] Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-06-24 18:08:35,190 INFO [SpringApplicationShutdownHook] c.z.h.HikariDataSource [HikariDataSource.java:350] HikariPool-1 - Shutdown initiated...
+2023-06-24 18:08:35,192 INFO [SpringApplicationShutdownHook] c.z.h.HikariDataSource [HikariDataSource.java:352] HikariPool-1 - Shutdown completed.

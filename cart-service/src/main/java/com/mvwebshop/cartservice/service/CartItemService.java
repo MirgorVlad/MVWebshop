@@ -2,11 +2,13 @@ package com.mvwebshop.cartservice.service;
 
 import com.mvwebshop.cartservice.dto.CartItemRequest;
 import com.mvwebshop.cartservice.dto.CartItemResponse;
+import com.mvwebshop.cartservice.dto.ProductResponse;
 import com.mvwebshop.cartservice.model.CartItem;
 import com.mvwebshop.cartservice.repository.CartItemRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.web.reactive.function.client.WebClient;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,6 +18,7 @@ import java.util.Optional;
 @Slf4j
 public class CartItemService {
     private final CartItemRepository cartItemRepository;
+    private final WebClient webClient;
 
     public void save(CartItemRequest cartItemRequest){
         CartItem cartItem = CartItem.builder()
@@ -43,6 +46,11 @@ public class CartItemService {
     }
 
     public List<CartItemResponse> getAll() {
+        ProductResponse[] allProducts = webClient.get()
+                .uri("http://localhost:8081/api/product/getAll")
+                .retrieve()
+                .bodyToMono(ProductResponse[].class)
+                .block();
         return cartItemRepository.findAll().stream()
                 .map(this::mapToCartItemResponse).toList();
     }
