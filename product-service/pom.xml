@@ -3,16 +3,13 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.1.0</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<groupId>com.mvwebshop</groupId>
+		<artifactId>mvwebshop-microservices</artifactId>
+		<version>1.0-SNAPSHOT</version>
 	</parent>
-	<groupId>com.vmwebshop</groupId>
 	<artifactId>product-service</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>product-service</name>
-	<description>Product service</description>
+	<name>Archetype - product-service</name>
+	<url>http://maven.apache.org</url>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
@@ -64,6 +61,10 @@
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
 		</dependency>
 	</dependencies>
 	<dependencyManagement>
