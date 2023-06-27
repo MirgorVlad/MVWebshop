@@ -10,6 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -46,14 +47,11 @@ public class CartItemService {
     }
 
     public List<CartItemResponse> getAll() {
-        ProductResponse[] allProducts = webClient.get()
-                .uri("http://localhost:8081/api/product/getAll")
-                .retrieve()
-                .bodyToMono(ProductResponse[].class)
-                .block();
-        System.out.println(allProducts);
+        List<CartItemResponse> cartItemResponses = new ArrayList<>();
+
         return cartItemRepository.findAll().stream()
-                .map(this::mapToCartItemResponse).toList();
+                .map(this::mapToCartItemResponse)
+                .toList();
     }
 
     public List<CartItem> getAllByUserId(Long userId) {
@@ -62,11 +60,12 @@ public class CartItemService {
 
 
     public CartItemResponse mapToCartItemResponse(CartItem cartItem){
+
         return CartItemResponse.builder()
                 .id(cartItem.getId())
                 .userId(cartItem.getUserId())
                 .quantity(cartItem.getQuantity())
-                .productId(cartItem.getProductId())
+                .productResponse(getProductResponseById(cartItem.getProductId()))
                 .build();
     }
 
@@ -77,5 +76,15 @@ public class CartItemService {
 
     public void deleteAll(List<CartItem> cartItem) {
         cartItemRepository.deleteAll(cartItem);
+    }
+
+    private ProductResponse getProductResponseById(Long productId){
+        List<CartItemResponse> cartItemResponses = new ArrayList<>();
+        ProductResponse productResponse = webClient.get()
+                .uri("http://localhost:8081/api/product/get/" + productId)
+                .retrieve()
+                .bodyToMono(ProductResponse.class)
+                .block();
+        return productResponse;
     }
 }
