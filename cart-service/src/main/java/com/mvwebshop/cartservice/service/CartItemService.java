@@ -21,20 +21,11 @@ public class CartItemService {
     private final CartItemRepository cartItemRepository;
     private final WebClient webClient;
 
-    public void save(CartItemRequest cartItemRequest){
-        CartItem cartItem = CartItem.builder()
-                .productId(cartItemRequest.getProductId())
-                .quantity(cartItemRequest.getQuantity())
-                .userId(cartItemRequest.getUserId())
-                .build();
-
-        cartItemRepository.save(cartItem);
-    }
-
     public void save(CartItem cartItem){
+        log.info("Saved item with id " + cartItem.getId());
         cartItemRepository.save(cartItem);
-        log.info("Item with id " + cartItem.getId() + " saved");
     }
+
 
     public void delete(Long id) {
         cartItemRepository.deleteById(id);
@@ -47,8 +38,6 @@ public class CartItemService {
     }
 
     public List<CartItemResponse> getAll() {
-        List<CartItemResponse> cartItemResponses = new ArrayList<>();
-
         return cartItemRepository.findAll().stream()
                 .map(this::mapToCartItemResponse)
                 .toList();
@@ -56,17 +45,6 @@ public class CartItemService {
 
     public List<CartItem> getAllByUserId(Long userId) {
         return cartItemRepository.findAllByUserId(userId);
-    }
-
-
-    public CartItemResponse mapToCartItemResponse(CartItem cartItem){
-
-        return CartItemResponse.builder()
-                .id(cartItem.getId())
-                .userId(cartItem.getUserId())
-                .quantity(cartItem.getQuantity())
-                .productResponse(getProductResponseById(cartItem.getProductId()))
-                .build();
     }
 
     public Optional<CartItem> find(Long id) {
@@ -86,5 +64,24 @@ public class CartItemService {
                 .bodyToMono(ProductResponse.class)
                 .block();
         return productResponse;
+    }
+
+    public CartItemResponse mapToCartItemResponse(CartItem cartItem){
+
+        return CartItemResponse.builder()
+                .id(cartItem.getId())
+                .userId(cartItem.getUserId())
+                .quantity(cartItem.getQuantity())
+                .productResponse(getProductResponseById(cartItem.getProductId()))
+                .build();
+    }
+
+    public static CartItem mapRequestToCartItem(CartItemRequest cartItemRequest) {
+        CartItem cartItem = CartItem.builder()
+                .productId(cartItemRequest.getProductId())
+                .quantity(cartItemRequest.getQuantity())
+                .userId(cartItemRequest.getUserId())
+                .build();
+        return cartItem;
     }
 }

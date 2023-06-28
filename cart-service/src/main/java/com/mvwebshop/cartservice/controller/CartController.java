@@ -2,6 +2,7 @@ package com.mvwebshop.cartservice.controller;
 
 import com.mvwebshop.cartservice.dto.CartItemRequest;
 import com.mvwebshop.cartservice.dto.CartItemResponse;
+import com.mvwebshop.cartservice.dto.CartResponse;
 import com.mvwebshop.cartservice.model.CartItem;
 import com.mvwebshop.cartservice.service.CartItemService;
 import lombok.RequiredArgsConstructor;
@@ -22,7 +23,7 @@ public class CartController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public void addItem(@RequestBody CartItemRequest cartItemRequest){
-        cartItemService.save(cartItemRequest);
+        cartItemService.save(CartItemService.mapRequestToCartItem(cartItemRequest));
     }
 
     @GetMapping
@@ -31,11 +32,23 @@ public class CartController {
     }
 
     @GetMapping("/{userId}")
-    public List<CartItemResponse> getAllItemsByUser(@PathVariable Long userId){
-        return cartItemService.getAllByUserId(userId).stream()
+    public CartResponse getAllItemsByUser(@PathVariable Long userId){
+        List<CartItemResponse> responses = cartItemService.getAllByUserId(userId)
+                .stream()
                 .map(cartItemService::mapToCartItemResponse)
                 .toList();
+
+        double price = 0;
+        for(CartItemResponse response : responses){
+            price += response.getProductResponse().getPrice();
+        }
+
+        return CartResponse.builder()
+                .cartItemResponses(responses)
+                .totalPrice(price)
+                .build();
     }
+
 
     @DeleteMapping(path = "/{id}")
     @ResponseStatus(HttpStatus.OK)
