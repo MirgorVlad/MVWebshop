@@ -3,6 +3,8 @@ package com.mvwebshop.cartservice.controller;
 import com.mvwebshop.cartservice.dto.CartItemRequest;
 import com.mvwebshop.cartservice.dto.CartItemResponse;
 import com.mvwebshop.cartservice.dto.CartResponse;
+import com.mvwebshop.cartservice.dto.ProductResponse;
+import com.mvwebshop.cartservice.exception.CartServiceException;
 import com.mvwebshop.cartservice.model.CartItem;
 import com.mvwebshop.cartservice.service.CartItemService;
 import lombok.RequiredArgsConstructor;
@@ -23,6 +25,10 @@ public class CartController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public void addItem(@RequestBody CartItemRequest cartItemRequest){
+        ProductResponse productResponse = cartItemService.getProductResponseById(cartItemRequest.getProductId());
+        if(productResponse.getStock() == 0){
+            throw new CartServiceException("Product "+cartItemRequest.getProductId()+" out of stock");
+        }
         cartItemService.save(CartItemService.mapRequestToCartItem(cartItemRequest));
     }
 

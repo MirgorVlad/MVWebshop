@@ -56,7 +56,7 @@ public class CartItemService {
         cartItemRepository.deleteAll(cartItem);
     }
 
-    private ProductResponse getProductResponseById(Long productId){
+    public ProductResponse getProductResponseById(Long productId){
         List<CartItemResponse> cartItemResponses = new ArrayList<>();
         ProductResponse productResponse = webClient.get()
                 .uri("http://localhost:8081/api/product/get/" + productId)
